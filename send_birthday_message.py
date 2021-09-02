@@ -20,8 +20,7 @@ HEADERS = {
 
 
 def get_html():
-    req = requests.get(URL, headers=HEADERS)
-    return req
+    return requests.get(URL, headers=HEADERS)
 
 
 def parse_web_site():
@@ -61,13 +60,11 @@ def get_friends_birthday_info():
 
 
 def send_birthday_message():
-    friends = get_friends_birthday_info()
-    for index, friend in enumerate(friends):
-        if 'bdate' in friend and len(friend['bdate']) > 7:
-            """[0:-5] - delete year"""
-            compare_birthday_with_today(friend['bdate'][0:-5], friend['id'])
-        elif 'bdate' in friend and len(friend['bdate']) < 7:
-            compare_birthday_with_today(friend['bdate'], friend['id'])
+    for friend in filter(lambda friend: 'bdate' in friend, get_friends_birthday_info()):
+        compare_birthday_with_today(
+            '.'.join(friend['bdate'].split('.')[:2]),
+            friend['id']
+        )
 
 
 def compare_birthday_with_today(day_and_month, vk_friend_id):
@@ -100,3 +97,4 @@ def get_rand_id():
 
 if __name__ == "__main__":
     time_to_send_message('10:00')
+    # send_birthday_message()
