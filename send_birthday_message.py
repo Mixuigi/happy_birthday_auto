@@ -96,5 +96,5 @@ def get_rand_id():
 
 
 if __name__ == "__main__":
-    time_to_send_message('15:50')
+    time_to_send_message('12:55')
     # send_birthday_message()
