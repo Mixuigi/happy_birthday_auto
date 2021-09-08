@@ -7,7 +7,7 @@ import vk_api
 import schedule
 
 from datetime import datetime
-from secret_information.settings import vk_token
+from settings import vk_token
 from bs4 import BeautifulSoup
 
 session = vk_api.VkApi(token=vk_token)
@@ -96,5 +96,5 @@ def get_rand_id():
 
 
 if __name__ == "__main__":
-    time_to_send_message('10:00')
+    time_to_send_message('15:35')
     # send_birthday_message()
